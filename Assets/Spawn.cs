@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour
 {
     //твои зоны
     [SerializeField] public GameObject tile1;
-    public Polygon[] tiles = new Polygon[1];
+    public List<IPolygon> tiles = new List<IPolygon>();
     decimal[,] vertices = new decimal[4, 2];
 
     void Start()
@@ -30,10 +30,10 @@ public class Spawn : MonoBehaviour
         vertices[3, 1] = 0;
 
 
-        tiles[0] = new Polygon(vertices);
+        tiles.Add(new Polygon(vertices));
 
         //тут размещаем все зоны.
-        for (int i = 0; i < tiles.Length; i++)
+        for (int i = 0; i < tiles.Count; i++)
         {
             tile1.transform.localScale = new Vector3((float)(vertices[0, 0] + vertices[1, 0]), (float)(vertices[1, 1] + vertices[2, 1]));
             tile1.transform.position = new Vector3((float)((vertices[0, 0] + vertices[1, 0]) / 2), (float)((vertices[1, 1] + vertices[2, 1]) / 2));
