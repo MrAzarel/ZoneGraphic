@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Polygon
+public class Polygon : IPolygon
 {
-    public int Width;
-    public int Height;
-    decimal[,] Vertices;
-
-    public Polygon(int width, int height, decimal[,] vertices)
+    public Polygon(decimal[,] vertices)
     {
-        Width = width;
-        Height = height;
         Vertices = vertices;
+    }
+
+    public int ID { get; }
+
+    public int Width { get; }
+
+    public int Height { get; }
+
+    public decimal[] Center { get;  }
+
+    public decimal[,] Vertices { get; }
+
+    public void Move(decimal centerDeltaX, decimal centerDeltaY)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Rotate(int angle)
+    {
+        throw new System.NotImplementedException();
     }
 }
 

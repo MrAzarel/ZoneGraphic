@@ -30,12 +30,12 @@ public class Spawn : MonoBehaviour
         vertices[3, 1] = 0;
 
 
-        tiles[0] = new Polygon(2, 2, vertices);
+        tiles[0] = new Polygon(vertices);
 
         //тут размещаем все зоны.
         for (int i = 0; i < tiles.Length; i++)
         {
-            tile1.transform.localScale = new Vector3(tiles[i].Width, tiles[i].Height);
+            tile1.transform.localScale = new Vector3((float)(vertices[0, 0] + vertices[1, 0]), (float)(vertices[1, 1] + vertices[2, 1]));
             tile1.transform.position = new Vector3((float)((vertices[0, 0] + vertices[1, 0]) / 2), (float)((vertices[1, 1] + vertices[2, 1]) / 2));
         }
     }
