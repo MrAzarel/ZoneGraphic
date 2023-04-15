@@ -35,8 +35,8 @@ public class Spawn : MonoBehaviour
         //тут размещаем все зоны.
         for (int i = 0; i < tiles.Count; i++)
         {
-            tile1.transform.localScale = new Vector3((float)(vertices[0, 0] + vertices[1, 0]), (float)(vertices[1, 1] + vertices[2, 1]));
-            tile1.transform.position = new Vector3((float)((vertices[0, 0] + vertices[1, 0]) / 2), (float)((vertices[1, 1] + vertices[2, 1]) / 2));
+            tile1.transform.localScale = new Vector3((float)(tiles[i].Vertices[0, 0] + tiles[i].Vertices[1, 0]), (float)(tiles[i].Vertices[1, 1] + tiles[i].Vertices[2, 1]));
+            tile1.transform.position = new Vector3((float)((tiles[i].Vertices[0, 0] + tiles[i].Vertices[1, 0]) / 2), (float)((tiles[i].Vertices[1, 1] + tiles[i].Vertices[2, 1]) / 2));
         }
     }
 }
