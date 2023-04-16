@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+    [SerializeField] public GameObject poly;
     //этот лист тебе не нужен. Потом передай сюда свой.
     public List<IPolygon> tiles = new List<IPolygon>();
     //и это тоже тебе не надо
@@ -34,16 +35,17 @@ public class Spawn : MonoBehaviour
         vertices[3, 0] = 0; vertices2[3, 0] = -1; vertices3[3, 0] = 0;
         vertices[3, 1] = 0; vertices2[3, 1] = 0; vertices3[3, 1] = -2;
 
-        tiles.Add(new Polygon(vertices, "0"));
-        tiles.Add(new Polygon(vertices2, "1"));
-        tiles.Add(new Polygon(vertices3, "2"));
+        tiles.Add(new Polygon(vertices));
+        tiles.Add(new Polygon(vertices2));
+        tiles.Add(new Polygon(vertices3));
 
         //тут размещаем все зоны.
         for (int i = 0; i < polygons.Count; i++)
         {
-            ((Polygon)polygons[i]).tile.GetComponent<MeshRenderer>().material.color = new Color(UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, 1);
-            ((Polygon)polygons[i]).tile.transform.localScale = new Vector3((float)(Math.Abs(polygons[i].Vertices[0, 0]) + Math.Abs(polygons[i].Vertices[1, 0])), (float)(Math.Abs(polygons[i].Vertices[1, 1]) + Math.Abs(polygons[i].Vertices[2, 1])), 1);
-            ((Polygon)polygons[i]).tile.transform.position = new Vector3((float)((polygons[i].Vertices[0, 0] + polygons[i].Vertices[1, 0]) / 2), (float)((polygons[i].Vertices[1, 1] + polygons[i].Vertices[2, 1]) / 2));
+            GameObject temp = Instantiate(poly);
+            temp.GetComponent<MeshRenderer>().material.color = new Color(UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, 1);
+            temp.transform.localScale = new Vector3((float)(Math.Abs(polygons[i].Vertices[0, 0]) + Math.Abs(polygons[i].Vertices[1, 0])), (float)(Math.Abs(polygons[i].Vertices[1, 1]) + Math.Abs(polygons[i].Vertices[2, 1])), 1);
+            temp.transform.position = new Vector3((float)((polygons[i].Vertices[0, 0] + polygons[i].Vertices[1, 0]) / 2), (float)((polygons[i].Vertices[1, 1] + polygons[i].Vertices[2, 1]) / 2));
         }
     }
 }

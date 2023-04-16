@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class Polygon : IPolygon
 {
-    public GameObject tile;
-
-    public Polygon(IPolygon polygon, string num)
+    public Polygon(IPolygon polygon)
     {
-        if (num == "0")
-        {
-            tile = GameObject.Find("Cube");
-        }
-        else
-            tile = GameObject.Find("Cube (" + num + ")");
         Vertices = polygon.Vertices;
     }
 
-    public Polygon(decimal[,] vertices, string num)
+    public Polygon(decimal[,] vertices)
     {
-        if (num == "0")
-        {
-            tile = GameObject.Find("Cube");
-        }
-        else
-            tile = GameObject.Find("Cube (" + num + ")");
         Vertices = vertices;
     }
 
