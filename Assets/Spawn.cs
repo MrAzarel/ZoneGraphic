@@ -43,9 +43,9 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < polygons.Count; i++)
         {
             GameObject temp = Instantiate(poly);
-            temp.GetComponent<MeshRenderer>().material.color = new Color(UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, 1);
+            temp.GetComponent<MeshRenderer>().material.color = new Color(UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, UnityEngine.Random.Range(0, 255) / 100, 0.5f);
             temp.transform.localScale = new Vector3((float)(Math.Abs(polygons[i].Vertices[0, 0]) + Math.Abs(polygons[i].Vertices[1, 0])), (float)(Math.Abs(polygons[i].Vertices[1, 1]) + Math.Abs(polygons[i].Vertices[2, 1])), 1);
-            temp.transform.position = new Vector3((float)((polygons[i].Vertices[0, 0] + polygons[i].Vertices[1, 0]) / 2), (float)((polygons[i].Vertices[1, 1] + polygons[i].Vertices[2, 1]) / 2));
+            temp.transform.position = new Vector3((float)((polygons[i].Vertices[0, 0] + polygons[i].Vertices[1, 0]) / 2), (float)((polygons[i].Vertices[1, 1] + polygons[i].Vertices[2, 1]) / 2), i);
         }
     }
 }
