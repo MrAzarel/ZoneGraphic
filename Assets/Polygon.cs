@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Polygon : IPolygon
 {
+    public GameObject tile = GameObject.Find("Cube");
     public Polygon(decimal[,] vertices)
     {
         Vertices = vertices;
